@@ -5,6 +5,7 @@ A web application for booking and managing clinic appointments.
 ## Features
 
 - Patient can book appointments
+- Patient will receive an email confirmation
 - Only doctor can login
 - Admin dashboard for managing users and appointments
 - Book, view, and cancel appointments
@@ -19,7 +20,7 @@ A web application for booking and managing clinic appointments.
 
 1. git
 2. node
-3. create a .env file under `clinic_appointment_booking/`. Make sure it includes your MONGO_URI
+3. create a .env file under `clinic_appointment_booking/`. Make sure it includes MONGO_URI, EMAIL_APP_PASSWORD, EMAIL_ADMIN 
 
 ## Setup
 
@@ -46,7 +47,7 @@ A web application for booking and managing clinic appointments.
 ## Usage
 
 - Book appointments as a patient.
-- Log in as a or doctor.
+- Log in as doctor (admin).
 - View appointments on a clean table
 
 ## Contributing

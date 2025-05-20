@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-import { Footer, Header } from "../components/index.components.js";
 import doctor_2 from './../assets/dr_vignesh_1.jpg';
 
 export const About = () => {

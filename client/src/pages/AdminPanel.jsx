@@ -14,9 +14,8 @@ function formatDate(date) {
   return `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')}/${d.getFullYear()}`;
 }
 
-export function AdminPanel( {setAuthenticated} ) {
+export function AdminPanel() {
   const [data, setData] = useState(sampleData || []);
-  // const [data, setData] = useState([]);
   // const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');

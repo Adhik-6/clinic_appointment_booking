@@ -1,5 +1,50 @@
-import Appointment from "./models.js";
 import bcrypt from 'bcrypt';
+import nodemailer from 'nodemailer';
+import Appointment from "./models.js";
+import dotenv from 'dotenv';
+dotenv.config();
+
+const { EMAIL_ADMIN, EMAIL_APP_PASSWORD } = process.env;
+
+// Create a transporter
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: EMAIL_ADMIN,
+    pass: EMAIL_APP_PASSWORD
+  }
+});
+
+// Send email
+const sendEmail = async (dbRes) => {
+  const formattedDate = new Date(dbRes.date).toLocaleDateString("en-IN", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+  try {
+    const info = await transporter.sendMail({
+      from: EMAIL_ADMIN,
+      to: dbRes.email,
+      subject: "VK Bone and Joint Clinic Appointment",
+      html: `
+        <div style="font-family: Arial, sans-serif; color: #333;"><br/>
+        <h2>Appointment Confirmation</h2><br/>
+        <p>Dear ${dbRes.name || 'Patient'},</p><br/>
+        <p>Your appointment at <strong>VK Bone and Joint Clinic</strong> has been successfully booked ✅.</p><br/>
+        <p><strong>Date:</strong> ${formattedDate}</p><br/>
+        <p>Ref id: ${dbRes._id}</p><br/>
+        <p>Thank you!</p><br/>
+      </div>
+      `,
+  });
+    console.log("Email sent:", info.response);
+  } catch (error) {
+    console.log("Error sending mail:", error);
+  }
+};
+
 
 export const login = async (req, res) => {
   try {
@@ -22,6 +67,7 @@ export const bookAppointment = async (req, res) => {
     const { inputObj } = req.body;
     // console.log("Input: ", inputObj);
     const dbRes = await Appointment.create({name: inputObj.fullName, email: inputObj.mail, age: inputObj.age, phone: inputObj.phoneNumber, date: inputObj.date});
+    if(inputObj.mail) sendEmail(dbRes);
     res.status(200).json({ success: true, message: "Appointment booked successfully", dbRes });
   } catch (err) {
     console.error("Error booking appointment:", err);

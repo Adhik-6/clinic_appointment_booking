@@ -1,6 +1,4 @@
 
-import { Footer, Header } from "../components/index.components.js";
-
 export const Service = () => {
   return (
     <>

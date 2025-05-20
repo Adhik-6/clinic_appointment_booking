@@ -1,4 +1,4 @@
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import checkMark from "./../assets/checkmark.svg";
 import { CircularSpinner } from "../components/index.components.js";
 import axios from "axios";

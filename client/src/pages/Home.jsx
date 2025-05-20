@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import doctor_1 from './../assets/dr_vignesh_1.jpg'
-import { Footer, Header } from "../components/index.components.js";
 
 export const Home = () => {
   return (
