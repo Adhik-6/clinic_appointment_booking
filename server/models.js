@@ -24,7 +24,9 @@ const appointmentSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: function (value) {
-        return value >= new Date();
+      const inputDate = new Date(value).setHours(0, 0, 0, 0);
+      const today = new Date().setHours(0, 0, 0, 0);
+      return inputDate >= today;
       },
       message: "Date must be in the future",
     },

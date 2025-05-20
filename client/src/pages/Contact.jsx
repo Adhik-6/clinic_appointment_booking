@@ -7,19 +7,33 @@ import toast from "react-hot-toast";
 export const Contact = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [isBooking, setIsBooking] = useState(true)
+  const [minDate, setMinDate] = useState('');
+  const [maxDate, setMaxDate] = useState('');
   const mailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  let inputs;
+  let inputs = document.querySelectorAll('input'); // name, mail, Age, phone, date
+  // console.log("inputs: ", inputs);
   let inputObj = {}
 
   useEffect(() => {
-    inputs = document.querySelectorAll('input'); // name, mail, Age, phone, date
+    const today = new Date();
+    const min = today.toISOString().split('T')[0];
+    
+    const maxObj = new Date();
+    maxObj.setDate(today.getDate() + 30);
+    const max = maxObj.toISOString().split('T')[0];
+    
+    setMinDate(min);
+    setMaxDate(max);
   }, []);
 
   async function submitDetails(e) {
     setIsLoading(true)
     e.preventDefault();
-    console.log("inputs: ", inputs); 
-    if (!validateField()) return;
+    // console.log("inputs: ", inputs); 
+    if (!validateField()){
+      setIsLoading(false)
+      return;
+    }
 
     inputObj.fullName = inputs[0].value.trim();
     inputObj.mail = inputs[1].value.trim();
@@ -58,7 +72,7 @@ export const Contact = () => {
     }
 
     //mail
-    if (!mailRegEx.test(inputs[1].value.trim())) {
+    if (inputs[1].value.trim() && !mailRegEx.test(inputs[1].value.trim())) {
       toast.error("Enter a valid Email");
       return false;
     }
@@ -89,7 +103,9 @@ export const Contact = () => {
     }
 
     // Date
-    if (inputs[4].valueAsDate < Date.now()) {
+    if (inputs[4].valueAsDate < new Date().setHours(0, 0, 0, 0)) {
+      console.log("inputs[4].valueAsDate: ", inputs[4].valueAsDate);
+      console.log("Date.now(): ", Date.now());
       toast.error("You can't select a past date");
       return false;
     }
@@ -167,7 +183,7 @@ export const Contact = () => {
           </div>
           <div>
             <label htmlFor="date">Date *</label>
-            <input type="date" name="date" id="date" required />
+            <input min={minDate} max={maxDate} type="date" name="date" id="date" required />
           </div>
           <div>
             <button onClick={(e) => submitDetails(e)} className="formSubmit">
