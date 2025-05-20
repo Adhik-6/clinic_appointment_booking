@@ -64,9 +64,3 @@ export const Login = ({ setAuthenticated }) => {
     </>
   );
 };
-
-// TODO:
-// Create a new mongoDB account (VK BONE AND JOINT)
-// replace mongo uri credentials
-// Tell about the SMS shit
-// Write documentation & upload to github

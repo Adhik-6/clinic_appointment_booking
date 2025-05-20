@@ -53,3 +53,10 @@ A web application for booking and managing clinic appointments.
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request.
+
+
+## TODO:
+- Create a new Google account (VK BONE AND JOINT)
+- Get MONGI_URI, APP_PASSWORD
+- Update Admin mail in DB
+- Update .env

@@ -6,23 +6,25 @@ dotenv.config();
 
 const { EMAIL_ADMIN, EMAIL_APP_PASSWORD } = process.env;
 
-// Create a transporter
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: EMAIL_ADMIN,
-    pass: EMAIL_APP_PASSWORD
-  }
-});
 
 // Send email
 const sendEmail = async (dbRes) => {
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: EMAIL_ADMIN,
+      pass: EMAIL_APP_PASSWORD
+    }
+  });
+
   const formattedDate = new Date(dbRes.date).toLocaleDateString("en-IN", {
     weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric"
   });
+  
   try {
     const info = await transporter.sendMail({
       from: EMAIL_ADMIN,
