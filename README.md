@@ -25,7 +25,7 @@ A web application for booking and managing clinic appointments.
 
 1. Clone the repository:
   ```bash
-  git clone https://github.com/yourusername/clinic_appointment_booking.git
+  git clone https://github.com/Adhik-6/clinic_appointment_booking.git
   cd clinic_appointment_booking
   ```
 2. Install all dependencies:
