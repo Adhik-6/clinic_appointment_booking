@@ -21,6 +21,8 @@ body {
   align-items: center;
   padding: 15px 50px;
   background: #004466;
+  position: relative;
+  z-index: 10;
 }
 .logo {
   font-size: 1.5em;
@@ -69,7 +71,7 @@ body {
 .aside_menu{
   /* transform: translateX(300px); */
   width: 270px;
-  height: 100vh;
+  min-height: 100vh;
   padding: 5px 16px 0 0;
   border-radius: 15px 0 0 15px;
   background: rgba(255, 255, 255, 0.1);
@@ -274,12 +276,13 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  /* height: 80vh; */
   text-align: left;
   padding: 20px;
 }
 .hero-content {
   max-width: 500px;
+  margin-bottom: 1.5em;
 }
 .hero h1 {
   font-size: 3em;
@@ -288,6 +291,7 @@ h3 {
 .hero p {
   font-size: 1em;
   line-height: 1.6;
+  margin-bottom: 1.5em;
 }
 .btn {
   background-color: #0e73a7;
@@ -299,13 +303,15 @@ h3 {
 .hero img {
   max-height: 400px;
   margin-left: 30px;
+  border-radius: 10px;
+  margin: 4em;
 }
 
 /* service */
 .doctor-info {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 0px;
+  right: 40px;
   background-color: rgba(22, 227, 246, 0.951);
   color: white;
   padding: 20px;
@@ -313,7 +319,7 @@ h3 {
   max-width: 250px;
   font-size: 1em;
   text-align: left;
-  z-index: 10;
+  z-index: 20;
 }
 .doctor-info h3 {
   font-size: 1.2em;
@@ -622,4 +628,64 @@ input[type="number"] {
   inset: 0;
   background: rgba(51, 51, 51, 0.356);
   z-index: 9999;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .hero img {
+    margin: 20px auto 0;
+    max-height: 350px;
+  }
+
+  .doctor-info {
+    position: static;
+    margin: 20px auto;
+  }
+
+  /* .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+  }
+
+  .nav {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  } */
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.8em;
+  }
+
+  .btn {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
+
+  .doctor-info {
+    font-size: 0.9em;
+    padding: 10px;
+    max-width: 90%;
+    text-align: center;
+  }
+
+  /* .nav a {
+    font-size: 0.9em;
+  } */
 }
