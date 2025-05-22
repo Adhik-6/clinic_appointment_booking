@@ -4,7 +4,7 @@ import { CircularSpinner } from "../components/index.components.js";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-export const Contact = ({ setSampleData }) => {
+export const Contact = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [isBooking, setIsBooking] = useState(true)
   const [minDate, setMinDate] = useState('');
@@ -45,7 +45,7 @@ export const Contact = ({ setSampleData }) => {
       // console.log("going to send req");
       // let res = await axios.post("http://localhost:8000/api/book-appointment", {inputObj});
       let res = { data: {success: true} }
-      setSampleData(prev => prev.push({ _id: `${Date.now()}`, name: inputObj.fullName, email: inputObj.mail, age: inputObj.age, phone: inputObj.phoneNumber, date: inputObj.date} ))
+      // setSampleData(prev => prev.push({ _id: `${Date.now()}`, name: inputObj.fullName, email: inputObj.mail, age: inputObj.age, phone: inputObj.phoneNumber, date: inputObj.date} ))
       // console.log("after sending req");
       if (res.data?.success) {
         toast.success("Appointment booked successfully");

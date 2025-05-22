@@ -8,7 +8,18 @@ function formatDate(date) {
   return `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')}/${d.getFullYear()}`;
 }
 
-export function AdminPanel({ sampleData }) {
+  const sampleData = [
+    { _id:1, name: 'John Doe', email: 'john@example.com', age: 30, phone: '1234567890', date: '2025-05-17' },
+    { _id:2, name: 'Jane Smith', email: 'jane@example.com', age: 25, phone: '9876543210', date: '2025-05-15' },
+    { _id:3, name: 'Alice Brown', email: 'alice@example.com', age: 28, phone: '1231231234', date: '2025-05-16' },
+    { _id:4, name: 'Venkat', email: 'venkat@example.com', age: 18, phone: '1231231230', date: '2025-01-16' },
+    { _id:5, name: 'Taniska', email: 'Taniska@example.com', age: 8, phone: '1231236230', date: '2025-01-26' },
+    { _id:6, name: 'Abishek', email: 'Abishek@example.com', age: 22, phone: '1241236230', date: '2025-06-26' },
+    { _id:7, name: 'Taniska', email: 'Taniska@example.com', age: 8, phone: '1231236230', date: '2025-06-26' },
+    { _id:8, name: 'Rajesh', email: 'Rajesh@example.com', age: 40, phone: '1231237230', date: '2025-06-26' },
+  ];
+
+export function AdminPanel() {
   const [data, setData] = useState(sampleData);
   // const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
