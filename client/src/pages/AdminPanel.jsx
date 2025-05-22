@@ -3,19 +3,13 @@ import { CircularSpinner } from './../components/index.components.js';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-const sampleData = [
-  { name: 'John Doe', email: 'john@example.com', age: 30, phone: '1234567890', date: '2025-05-17' },
-  { name: 'Jane Smith', email: 'jane@example.com', age: 25, phone: '9876543210', date: '2025-05-15' },
-  { name: 'Alice Brown', email: 'alice@example.com', age: 28, phone: '1231231234', date: '2025-05-16' },
-];
-
 function formatDate(date) {
   const d = new Date(date);
   return `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')}/${d.getFullYear()}`;
 }
 
-export function AdminPanel() {
-  const [data, setData] = useState(sampleData || []);
+export function AdminPanel({ sampleData }) {
+  const [data, setData] = useState(sampleData);
   // const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -30,7 +24,11 @@ export function AdminPanel() {
     setLoading(true);
     async function getAppointments() {
       try {
-        const res = await axios.get('http://localhost:8000/api/get-appointments');
+        // const res = await axios.get('http://localhost:8000/api/get-appointments');
+        let res = { data: {
+          success: true,
+          appointments: sampleData
+        }}
         if (res.data?.success) {
           setData(res.data?.appointments || []);
           // setFilteredData(res.data.appointments);
@@ -59,7 +57,11 @@ export function AdminPanel() {
       isCompleted = true;
     }
     try {
-      let res = await axios.post('http://localhost:8000/api/update-appointment-completed', {id, isCompleted});
+      // let res = await axios.post('http://localhost:8000/api/update-appointment-completed', {id, isCompleted});
+      let res = { data: {
+          success: true,
+          message: "Done!"
+        }}
       // console.log("Response: ", res);
       if (!res.data?.success) {
         toast.error(res.data?.message || `Can't update appointment status`);
@@ -84,7 +86,21 @@ export function AdminPanel() {
     if(!window.confirm(`Are you sure you want to delete appointments older than ${months} months?`)) return;
     try {
       setLoading(true);
-      let res = await axios.post('http://localhost:8000/api/delete-appointments', {months});
+      // let res = await axios.post('http://localhost:8000/api/delete-appointments', {months});
+      let res = { data: {
+          success: true,
+        }}
+      setData(prev => {
+        const cutoffDate = new Date();
+        cutoffDate.setMonth(cutoffDate.getMonth() - months);
+        console.log("cuttoff date", cutoffDate)
+        // console.log("newDeleteDate", newDeleteDate)
+        return prev.filter(item => {
+          const date = new Date(item.date)
+          console.log("date > deleteDate", date > cutoffDate)
+          return date > cutoffDate
+        })
+      })
       if (res.data?.success) {
         toast.success(res.data?.message || 'Deleted previous appointments successfully');
       } else {
@@ -95,7 +111,7 @@ export function AdminPanel() {
       toast.error(err.response.data?.message || 'Error deleting appointments');
     } finally {
       setLoading(false);
-      window.location.reload()
+      // window.location.reload()
     }
   }
 

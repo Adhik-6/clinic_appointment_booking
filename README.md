@@ -49,6 +49,7 @@ A web application for booking and managing clinic appointments.
 - Book appointments as a patient.
 - Log in as doctor (admin).
 - View appointments on a clean table
+- Access the admin panel by adding `/admin-panel` at the home page URL
 
 ## Contributing
 

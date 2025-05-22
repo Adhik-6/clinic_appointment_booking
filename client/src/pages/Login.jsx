@@ -14,8 +14,11 @@ export const Login = ({ setAuthenticated }) => {
     try {
       setLoading(true);
       setError("");
-      const res = await axios.post("http://localhost:8000/api/login", {mail, password});
+      // const res = await axios.post("http://localhost:8000/api/login", {mail, password});
       // console.log("Response: ", res);
+      let res = { data: {
+          success: true,
+        }}
       if (res.data?.success) {
         setSuccess(true);
         setError("");
