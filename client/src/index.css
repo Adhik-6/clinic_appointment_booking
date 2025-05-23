@@ -3,10 +3,6 @@
   box-sizing: border-box;
 }
 
-html {
-  min-width: 100vh;
-}
-
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -101,6 +97,7 @@ body {
   background: #004466;
   color: white;
   padding: 15px;
+  margin-top: auto
 }
 
 @media (max-width: 768px) {
@@ -224,7 +221,6 @@ h3 {
   padding: 1em ;
 }
 
-
 .timingSection {
   max-width: 400px;
   background-color: #ffffffa8;
@@ -309,12 +305,13 @@ h3 {
   border-radius: 10px;
   margin: 4em;
 }
-
-/* service */
+.img-container {
+  position: relative;
+}
 .doctor-info {
   position: absolute;
-  bottom: 0px;
-  right: 40px;
+  bottom: 20px;
+  right: -10px;
   background-color: rgba(22, 227, 246, 0.951);
   color: white;
   padding: 20px;
@@ -332,6 +329,8 @@ h3 {
   margin: 5px 0;
 }
 
+
+/* service */
 .services-section {
   display: flex;
   flex-wrap: wrap;

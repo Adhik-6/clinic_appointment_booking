@@ -17,16 +17,15 @@ export const Home = () => {
             Book Now
           </Link>
         </div>
-        <div>
+        <div className="img-container">
           <img src={doctor_1} alt="Doctor Image" />
+          <div className="doctor-info">
+            <h3>Dr. S.V. Vignesh</h3>
+            <p>MBBS, MS(ORTHO)</p>
+            <p>MMC Chennai</p>
+          </div>
         </div>
       </section>
-
-      <div className="doctor-info">
-        <h3>Dr. S.V. Vignesh</h3>
-        <p>MBBS, MS(ORTHO)</p>
-        <p>MMC Chennai</p>
-      </div>
 
     </>
   );
