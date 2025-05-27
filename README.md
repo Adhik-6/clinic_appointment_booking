@@ -1,63 +1,75 @@
 # Clinic Appointment Booking
 
-A web application for booking and managing clinic appointments.
+A web application to book and manage clinic appointments efficiently.
 
 ## Features
 
-- Patient can book appointments
-- Patient will receive an email confirmation
-- Only doctor can login
-- Admin dashboard for managing users and appointments
-- Book, view, and cancel appointments
+- Patients can book, view, and cancel appointments
+- Email confirmation sent to patients after booking
+- Secure login for doctors only
+- Admin dashboard to manage users and appointments
 
 ## Tech Stack
 
-- **Backend:** Node, Express
-- **Frontend:** CSS, React
+- **Backend:** Node.js, Express
+- **Frontend:** React, CSS
 - **Database:** MongoDB
 
-## Software Requirements
+## Prerequisites
 
-1. git
-2. node
-3. create a .env file under `clinic_appointment_booking/`. Make sure it includes MONGO_URI, EMAIL_APP_PASSWORD, EMAIL_ADMIN 
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/)
+- Create a `.env` file in the `clinic_appointment_booking/` directory with the following variables:
+  - `MONGO_URI`
+  - `EMAIL_APP_PASSWORD`
+  - `EMAIL_ADMIN`
 
-## Setup
+## Getting Started
 
-1. Clone the repository:
-  ```bash
-  git clone https://github.com/Adhik-6/clinic_appointment_booking.git
-  cd clinic_appointment_booking
-  ```
-2. Install all dependencies:
-  ```bash
-  npm run build
-  ```
-3. Start the backend server:
-  ```bash
-  npm run dev
-  ```
-4. Start the frontend React app:
-  - Open a new terminal instance withour closing the previous one.
-  - Navigate to `clinic_appointment_booking/` folder and run:
-  ```bash
-  cd client && npm run dev
-  ```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Adhik-6/clinic_appointment_booking.git
+   cd clinic_appointment_booking
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Build the project:**
+   ```bash
+   npm run build
+   ```
+
+4. **Start the backend server:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Start the frontend React app:**
+   - Open a new terminal (keep the backend running).
+   - Navigate to the `client` folder and run:
+     ```bash
+     cd client
+     npm install
+     npm run dev
+     ```
 
 ## Usage
 
-- Book appointments as a patient.
-- Log in as doctor (admin).
-- View appointments on a clean table
-- Access the admin panel by adding `/admin-panel` at the home page URL
+- Patients can book appointments online.
+- Doctors (admins) can log in to manage appointments.
+- View all appointments in a user-friendly table.
+- Access the admin panel at `/admin-panel`.
 
-## Contributing
+## Screenshots
+![Admin Panel](./screenshots/admin_panel.png)
+![Admin Login](./screenshots/admin_login.png)
 
-Contributions are welcome! Please open an issue or submit a pull request.
+## TODO
 
-
-## TODO:
 - Create a new Google account (VK BONE AND JOINT)
-- Get MONGI_URI, APP_PASSWORD
-- Update Admin mail in DB
-- Update .env
+- Obtain `MONGO_URI` and `EMAIL_APP_PASSWORD`
+- Update admin email in the database
+- Update the `.env` file accordingly
